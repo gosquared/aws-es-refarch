@@ -23,9 +23,25 @@ Parameters:
     Type: String
     Default: aws-elasticsearch
     Description: Name of the Elasticsearch cluster
+  EsVersion:
+    Type: Number
+    Default: 7.9
+    Description: Version of Elasticsearch
+  NumNodes:
+    Type: Number
+    Default: 1
+    Description: Number of nodes
+  InstanceType:
+    Type: String
+    Default: t3.small.elasticsearch
+    Description: Instance type of Elasticsearch nodes
 
 Resources:
   Elasticsearch:
     Type: AWS::Elasticsearch::Domain
     Properties:
       DomainName: !Sub '${ClusterName}-${Stage}'
+      ElasticsearchVersion: !Ref EsVersion
+      ElasticsearchClusterConfig:
+        InstanceCount: !Ref NumNodes
+        InstanceType: !Ref InstanceType
