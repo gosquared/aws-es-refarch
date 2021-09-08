@@ -40,7 +40,7 @@ Resources:
   Elasticsearch:
     Type: AWS::Elasticsearch::Domain
     Properties:
-      DomainName: !Sub '${ClusterName}-${Stage}'
+      DomainName: !Sub '${AWS::StackName}'
       ElasticsearchVersion: !Ref EsVersion
       ElasticsearchClusterConfig:
         InstanceCount: !Ref NumNodes
