@@ -1,0 +1,31 @@
+Parameters:
+  VpcId:
+    Type: String
+    # Default: vpc-abc123 # vpc-1 10.0.0.0/16
+    Description: The VPC in which to place elasticsearch
+  VpcSubnet:
+    Type: String
+    # Default: subnet-abc123
+    Description: The subnet in which to place elasticsearch
+  TagKey:
+    Type: String
+    Default: role
+    Description: Name of the tag
+  TagValue:
+    Type: String
+    Default: aws-elasticsearch
+    Description: Value of the tag
+  Stage:
+    Type: String
+    Default: dev
+    Description: Stage
+  ClusterName:
+    Type: String
+    Default: aws-elasticsearch
+    Description: Name of the Elasticsearch cluster
+
+Resources:
+  Elasticsearch:
+    Type: AWS::Elasticsearch::Domain
+    Properties:
+      DomainName: !Sub '${ClusterName}-${Stage}'
