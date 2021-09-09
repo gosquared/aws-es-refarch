@@ -24,3 +24,5 @@ aws --region $AWS_REGION cloudformation create-stack \
   ParameterKey=NumNodes,ParameterValue=1 \
   ParameterKey=InstanceType,ParameterValue=t3.small.elasticsearch \
 ```
+
+Instance types: https://aws.amazon.com/opensearch-service/pricing/
